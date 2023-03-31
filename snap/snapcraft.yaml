@@ -1,0 +1,37 @@
+name: dir-tree
+base: core20
+version: "0.1.0"
+Summary: Visualize Your Directory Structure with Ease
+Description: |
+  Introducing dir-tree, a simple yet powerful command-line tool that helps you explore and visualize the structure of your directories and subdirectories. With dir-tree, you can gain a clear overview of your file organization in an easy-to-read tree format.
+
+  Key features:
+  - Easy-to-understand tree-style visualization of directories and subdirectories.
+  - Compatible with a wide range of systems, including home directories and removable media.
+  - Quick and efficient navigation through your filesystem.
+  - Ideal for developers, system administrators, and users looking to organize or declutter their file system.
+
+  Say goodbye to cluttered directories and hello to a beautifully organized file system with dir-tree. Install now and experience a new level of control over your directories!
+
+grade: stable
+confinement: strict
+
+parts:
+  dir-tree:
+    plugin: python
+    source: .
+    build-packages:
+      - python3
+    stage-packages:
+      - python3
+    override-build: |
+      snapcraftctl build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/bin
+      cp bin/dir_structure.py $SNAPCRAFT_PART_INSTALL/bin/
+
+apps:
+  dir-tree:
+    command: bin/python $SNAP/bin/dir_structure.py
+    plugs:
+      - home
+      - removable-media
