@@ -1,6 +1,6 @@
 name: dir-tree
 base: core20
-version: "0.1.0"
+version: "0.1.1"
 summary: Visualize Your Directory Structure with Ease
 description: |
   Introducing dir-tree, a simple yet powerful command-line tool that helps you explore and visualize the structure of your directories and subdirectories. With dir-tree, you can gain a clear overview of your file organization in an easy-to-read tree format.
@@ -35,3 +35,7 @@ apps:
     plugs:
       - home
       - removable-media
+
+architectures:
+  - build-on: amd64
+    run-on: amd64
